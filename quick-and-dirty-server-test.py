@@ -53,14 +53,14 @@ def test_connection(name, url, timeout=10):
     try:
         ip = socket.gethostbyname(urlinfo.netloc)
     except Exception as e:
-        file_str.write('Error resolving DNS for {}: {}, {}<br>'.format(name, url, e))
+        file_str.write('Erro ao resolver o DNS para {}: {}, {}<br>'.format(name, url, e))
         return
     dns_elapsed = time.time() - start
     start = time.time()
     try:
         _ = urlopen(url, timeout=timeout)
     except Exception as e:
-        file_str.write("Error open {}: {}, {}, DNS finished in {} sec.<br>".format(name, url, e, dns_elapsed))
+        file_str.write("Erro ao abrir {}: {}, {}, o DNS terminou em{} segs.<br>".format(name, url, e, dns_elapsed))
         return
     load_elapsed = time.time() - start
     file_str.write("Timing for {}: {}, DNS: {:.4f} sec, LOAD: {:.4f} sec.<br>".format(name, url, dns_elapsed, load_elapsed))
@@ -69,8 +69,8 @@ def test_connection(name, url, timeout=10):
 def check_python():
     file_str = StringIO()
     file_str.write('----------Python Info----------<br>')
-    file_str.write('Version      : %s<br>' % platform.python_version())
-    file_str.write('Compiler     : %s<br>' % platform.python_compiler())
+    file_str.write('Versao      : %s<br>' % platform.python_version())
+    file_str.write('Compilador     : %s<br>' % platform.python_compiler())
     #file_str.write('Build        : %s' % platform.python_build())
     #file_str.write('Arch         : %s' % platform.architecture())
     return file_str.getvalue()
@@ -80,10 +80,10 @@ def check_pip():
     file_str.write('------------Pip Info-----------')
     try:
         import pip
-        file_str.write('Version      : %r<br>' % pip.__version__)
-        file_str.write('Directory    : %r<br>' % os.path.dirname(pip.__file__))
+        file_str.write('Versao      : %r<br>' % pip.__version__)
+        file_str.write('Diretorio    : %r<br>' % os.path.dirname(pip.__file__))
     except ImportError:
-        file_str.write('No corresponding pip install for current python.<br>')
+        file_str.write('Nao ha instalacao de pip correspondente para este python.<br>')
     return file_str.getvalue()
 
 def check_mxnet():
