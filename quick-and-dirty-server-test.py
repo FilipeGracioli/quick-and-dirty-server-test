@@ -104,7 +104,7 @@ def check_mxnet():
         import traceback
         if not isinstance(e, IOError):
             file_str.write("An error occured trying to import mxnet.<br>")
-            file_str.write("This is very likely due to missing missing or incompatible library files.<br>")
+            file_str.write("This is very likely due to missing or incompatible library files.<br>")
         file_str.write(traceback.format_exc())
     return file_str.getvalue()
 
