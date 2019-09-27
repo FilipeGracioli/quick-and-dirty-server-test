@@ -14,7 +14,7 @@ except ImportError:
 import argparse
 
 def parse_args():
-    """Parse arguments."""
+    """Parse arguments"""
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         description='Diagnose script for checking the current system.')
@@ -112,17 +112,17 @@ def check_os():
     file_str = StringIO()
     file_str.write('----------System Info----------<br>')
     file_str.write('Platform     : %r<br>' % platform.platform())
-    file_str.write('system       : %r<br>' % platform.system())
-    file_str.write('node         : %r<br>' % platform.node())
-    file_str.write('release      : %r<br>' % platform.release())
-    file_str.write('version      : %r<br>' % platform.version())
+    file_str.write('System       : %r<br>' % platform.system())
+    file_str.write('Node         : %r<br>' % platform.node())
+    file_str.write('Release      : %r<br>' % platform.release())
+    file_str.write('Version      : %r<br>' % platform.version())
     return file_str.getvalue()
 
 def check_hardware():
     file_str = StringIO()
     file_str.write('----------Hardware Info----------<br>')
-    file_str.write('machine      : %r' % platform.machine())
-    file_str.write('processor    : %r' % platform.processor())
+    file_str.write('Machine      : %r' % platform.machine())
+    file_str.write('Processor    : %r' % platform.processor())
     if sys.platform.startswith('darwin'):
         pipe = subprocess.Popen(('sysctl', '-a'), stdout=subprocess.PIPE)
         output = pipe.communicate()[0]
